@@ -8,7 +8,7 @@
 <body>
     <section class="packages">
         <div class="heading">
-          <h1>EID SECTION</h1>
+          <h1>formal SECTION</h1>
         </div>
     
         <div class="packages-box-container">
@@ -23,7 +23,7 @@
          var database = firebase.database();
 
 // Fetch menu data from Firebase
-var menuRef = database.ref("eid");
+var menuRef = database.ref("formal");
 menuRef.once("value", function(snapshot) { // Use once instead of on to fetch the data only once
     var menuData = snapshot.val();
 
@@ -68,7 +68,7 @@ function redirectToUrl(itemName) {
     // Save itemName to localStorage
     localStorage.setItem("itemName", itemName);
 
-    var url = "/eidd.html";
+    var url = "/formall.html";
     window.location.href = url;
 }
 

@@ -52,7 +52,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 </head>
 <body>
-<h1>ADMIN PANEL (eid)</h1>
+<h1>ADMIN PANEL (bags)</h1>
 <h2>Click <a href="apnaorderchecker.html" class="clickHereLink disabled" data-href="apnaorderchecker.html"><u>here</u></a> to check orders</h2>
 <h2>Click <a href="newsletter.html" class="clickHereLink disabled" data-href="newsletter.html"><u>here</u></a> to check newsletter emails</h2>
 <h2>Click <a href="messages.html" class="clickHereLink disabled" data-href="messages.html"><u>here</u></a> to check messages</h2>
@@ -111,17 +111,17 @@ click <a href="admin4.html">here</a> to edit formal<br>
 <input type="text" id="button19" placeholder="Enter Button 19 name">
 <input type="text" id="button19Price" placeholder="Enter Button 19 price">
 <!-- Add more input fields for additional buttons and prices as needed -->
-<button id="saveItemButton" onclick="saveItem()">Save Item</button>
+<button id="saveItemButton" onclick="saveItem()" disabled>Save Item</button>
 
 <h2>Remove Existing domestic Package </h2>
 <input type="text" id="itemIdToRemove" placeholder="Enter Package name to remove">
-<button id="removeItemButton" onclick="removeItem()">Remove Item</button>
+<button id="removeItemButton" onclick="removeItem()" disabled>Remove Item</button>
 
 <div id="messageDiv"></div>
 <script src="firebase.js"></script>
 <script>
     var database = firebase.database();
-    var itemsRef = database.ref("eid");
+    var itemsRef = database.ref("bags");
 
     function showMessage(message, isError) {
         var messageDiv = document.getElementById("messageDiv");

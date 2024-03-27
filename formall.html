@@ -15,7 +15,7 @@
 
     <section class="packages" id="services">
       <div class="heading">
-        <h1>kids</h1>
+        <h1>formal</h1>
       </div>
     </section>
 
@@ -34,7 +34,7 @@
 // Get a reference to the database
 // Get a reference to the database
 var database = firebase.database();
-var menuRef = database.ref("kids");
+var menuRef = database.ref("formal");
 
 // Check if menu items are already loaded
 var menuItemsLoaded = false;
@@ -93,13 +93,16 @@ ${menuItem.button8 ? `<button class="price-button" data-price="${menuItem.button
 
 <!-- Check if menuItem.button9 is defined before rendering the button -->
 ${menuItem.button9 ? `<button class="price-button" data-price="${menuItem.button9Price}">${menuItem.button9}</button>` : ''}
-${menuItem.button1 ? `<button class="price-button" data-price="${menuItem.button10Price}">${menuItem.button10}</button>` : ''}
-${menuItem.button1 ? `<button class="price-button" data-price="${menuItem.button11Price}">${menuItem.button11}</button>` : ''}
-${menuItem.button1 ? `<button class="price-button" data-price="${menuItem.button12Price}">${menuItem.button12}</button>` : ''}
-${menuItem.button1 ? `<button class="price-button" data-price="${menuItem.button13Price}">${menuItem.button13}</button>` : ''}
+${menuItem.button10 ? `<button class="price-button" data-price="${menuItem.button10Price}">${menuItem.button10}</button>` : ''}
+${menuItem.button11 ? `<button class="price-button" data-price="${menuItem.button11Price}">${menuItem.button11}</button>` : ''}
+${menuItem.button12 ? `<button class="price-button" data-price="${menuItem.button12Price}">${menuItem.button12}</button>` : ''}
+${menuItem.button13 ? `<button class="price-button" data-price="${menuItem.button13Price}">${menuItem.button13}</button>` : ''}
+${menuItem.button14 ? `<button class="price-button" data-price="${menuItem.button14Price}">${menuItem.button14}</button>` : ''}
+${menuItem.button15 ? `<button class="price-button" data-price="${menuItem.button15Price}">${menuItem.button15}</button>` : ''}
+${menuItem.button16 ? `<button class="price-button" data-price="${menuItem.button16Price}">${menuItem.button16}</button>` : ''}
+${menuItem.button17 ? `<button class="price-button" data-price="${menuItem.button17Price}">${menuItem.button17}</button>` : ''}
 
-<button class="add-to-cart-button" data-name="${menuItem.name}" data-image="${menuItem.image}" data-price="${menuItem.price}" data-button-name="Specific Button Name">Add to Cart</button>
->
+                        <button class="add-to-cart-button" data-name="${menuItem.name}" data-image="${menuItem.image}" data-price="${menuItem.price}">Add to Cart</button>
                     </div>
                     <section class="packages-box-container">
                         <div class="content">
@@ -111,7 +114,6 @@ ${menuItem.button1 ? `<button class="price-button" data-price="${menuItem.button
                             <div class="package-prices">
                                 <div class="package-price" id="current-price">        
                                     <h4>Rs ${menuItem.button1Price}</h4>
-
                                 </div>
                             </div>
                             <div class="package-des" id="des">
@@ -135,43 +137,58 @@ ${menuItem.button1 ? `<button class="price-button" data-price="${menuItem.button
                 // Append menu item element to menu container
                 menuContainer.appendChild(menuItemElement);
                 
-                // Add event listener to Price buttons
-                var priceButtons = menuItemElement.querySelectorAll(".price-button");
-                priceButtons.forEach(function(priceButton) {
-                    priceButton.addEventListener("click", function() {
-                        // Update current price display
-                        var currentPrice = menuItemElement.querySelector("#current-price h4");
-var price = priceButton.getAttribute("data-price");
-currentPrice.textContent = price ? "Rs " + price : "Rs ${menuItem.button1Price}"; // Set default price to '0' if price is not defined
+// Add event listeners to Price buttons
+var priceButtons = menuItemElement.querySelectorAll(".price-button");
+priceButtons.forEach(function(priceButton, index) {
+    priceButton.addEventListener("click", function() {
+        // Update current price display
+        var currentPrice = menuItemElement.querySelector("#current-price h4");
+        currentPrice.textContent = "Rs " + priceButton.getAttribute("data-price");
 
-                    });
-                });
+        // Capture the current button name
+        var currentButtonName = priceButton.textContent;
+        console.log("Current button name:", currentButtonName);
+
+        // Store the current button name in localStorage
+        localStorage.setItem("currentButtonName", currentButtonName);
+    });
+
+    // Simulate click event on button 1 by default
+    if (index === 0) {
+        priceButton.click();
+    }
+});
+
+
 // Add event listener to Add to Cart button
 var addToCartButton = menuItemElement.querySelector(".add-to-cart-button");
 addToCartButton.addEventListener("click", function() {
     var itemName = addToCartButton.getAttribute("data-name");
     var itemImages = menuItem.images; // Retrieve array of images
+    var randomImageIndex = Math.floor(Math.random() * itemImages.length); // Generate a random index
+    var randomImage = itemImages[randomImageIndex]; // Get a random image from the array
     var itemPrice = menuItemElement.querySelector("#current-price h4").textContent.replace("Rs ", "");
-    var buttonName = addToCartButton.textContent.trim(); // Get the text content of the button clicked and remove leading/trailing whitespace
-
-    console.log("Button Name:", buttonName); // Log the button name to the console
+    
+    // Retrieve the current button name from localStorage
+    var currentButtonName = localStorage.getItem("currentButtonName");
+    console.log("Retrieved current button name:", currentButtonName);
 
     // Retrieve existing cart items from localStorage or initialize an empty array
     var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
     // Check if the item is already in the cart (including price and button name)
     var existingItem = cartItems.find(function(item) {
-        return item.name === itemName && item.price === itemPrice && item.buttonName === buttonName;
+        return item.name === itemName && item.price === itemPrice && item.buttonName === currentButtonName;
     });
 
     if (!existingItem) {
         // Item not in cart, add it
         cartItems.push({
             name: itemName,
-            images: itemImages, // Store array of images
+            image: randomImage, // Use the random image
             price: itemPrice,
-            quantity: 1, // Initialize quantity to 1
-            buttonName: buttonName // Set the button name
+            buttonName: currentButtonName, // Store the current button name
+            quantity: 1 // Initialize quantity to 1
         });
     } else {
         // Item already in cart, increment quantity
@@ -184,7 +201,6 @@ addToCartButton.addEventListener("click", function() {
     // Provide feedback to the user
     alert("Item added to cart!");
 });
-
 
 
 

@@ -11,114 +11,85 @@
 <body>
     <h1>Cart</h1>
     <div id="cart-items"></div>
-
-    <form id="order-form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        <label for="contact">Contact Number:</label>
-        <input type="text" id="contact" name="contact" required><br><br>
-        <label for="address">Address:</label>
-        <textarea id="address" name="address" required></textarea><br><br>
-        <button type="submit">Place Order</button>
-    </form>
-    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
-    <script src="firebase.js"></script>
+    <button><a href="checkout.html">checkout</a></button>
     <script>
-     
         document.addEventListener("DOMContentLoaded", function() {
-            // Retrieve cart items from localStorage
-            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+            function displayCart() {
+                // Retrieve cart items from localStorage
+                var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-            // Display cart items on the page
-            var cartItemsContainer = document.getElementById("cart-items");
-            if (cartItems.length === 0) {
-                cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
-            } else {
-                var totalAmount = 0;
+                // Display cart items on the page
+                var cartItemsContainer = document.getElementById("cart-items");
+                cartItemsContainer.innerHTML = ""; // Clear existing content
 
-                cartItems.forEach(function(item) {
-                    var itemElement = document.createElement("div");
-                    itemElement.innerHTML = `
-                        <div>
-                            <img src="${item.image}" alt="${item.name}" style="width: 100px;">
-                            <p>Name: ${item.name}</p>
-                            <p>Price: Rs ${item.price}</p>
-                            <p>Quantity: ${item.quantity}</p>
-                            <p>Size: ${item.buttonName}</p>
-                            <button class="remove-item-button" data-name="${item.name}" data-price="${item.price}">Remove</button>
-                            <hr>
-                        </div>`;
-                    cartItemsContainer.appendChild(itemElement);
+                if (cartItems.length === 0) {
+                    cartItemsContainer.innerHTML = "<p>Your cart is empty. <a href=\"index.html\">Continue Shopping</a></p>";
+                } else {
+                    var totalAmount = 0;
 
-                    // Calculate total amount
-                    totalAmount += parseInt(item.price) * parseInt(item.quantity);
-                });
+                    cartItems.forEach(function(item) {
+                        var itemElement = document.createElement("div");
+                        itemElement.innerHTML = `
+                            <div>
+                                <img src="${item.image}" alt="${item.name}" style="width: 100px;">
+                                <p>Name: ${item.name}</p>
+                                <p>Price: Rs ${item.price}</p>
+                                <p>Quantity: ${item.quantity}</p>
+                                <p>Size: ${item.buttonName}</p>
+                                <button class="remove-item-button" data-name="${item.name}" data-price="${item.price}">Remove</button>
+                                <hr>
+                            </div>`;
+                        cartItemsContainer.appendChild(itemElement);
 
-                // Display total amount
-                cartItemsContainer.innerHTML += `<h3>Total: Rs ${totalAmount}</h3>`;
-
-                // Add event listeners to Remove buttons
-                var removeButtons = document.querySelectorAll(".remove-item-button");
-                removeButtons.forEach(function(button) {
-                    button.addEventListener("click", function() {
-                        var itemName = button.getAttribute("data-name");
-                        var itemPrice = button.getAttribute("data-price");
-
-                        // Retrieve cart items from localStorage
-                        var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-                        // Find index of item to remove
-                        var index = cartItems.findIndex(function(item) {
-                            return item.name === itemName && item.price === itemPrice;
-                        });
-
-                        // Decrease quantity by 1 or remove item if quantity is 1
-                        if (index !== -1) {
-                            if (cartItems[index].quantity > 1) {
-                                cartItems[index].quantity--;
-                            } else {
-                                cartItems.splice(index, 1);
-                            }
-                            // Update cart items in localStorage
-                            localStorage.setItem("cartItems", JSON.stringify(cartItems));
-                            // Refresh cart display
-                            location.reload();
-                        }
+                        // Calculate total amount
+                        totalAmount += parseInt(item.price) * parseInt(item.quantity);
                     });
-                });
+
+                    // Display total amount
+                    cartItemsContainer.innerHTML += `<h3>Total: Rs ${totalAmount}</h3>`;
+
+                    // Add event listeners to Remove buttons
+                    var removeButtons = document.querySelectorAll(".remove-item-button");
+                    removeButtons.forEach(function(button) {
+                        button.addEventListener("click", function() {
+                            var itemName = button.getAttribute("data-name");
+                            var itemPrice = button.getAttribute("data-price");
+
+                            // Retrieve cart items from localStorage
+                            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+                            // Find index of item to remove
+                            var index = cartItems.findIndex(function(item) {
+                                return item.name === itemName && item.price === itemPrice;
+                            });
+
+                            // Decrease quantity by 1 or remove item if quantity is 1
+                            if (index !== -1) {
+                                if (cartItems[index].quantity > 1) {
+                                    cartItems[index].quantity--;
+                                } else {
+                                    cartItems.splice(index, 1);
+                                }
+                                // Update cart items in localStorage
+                                localStorage.setItem("cartItems", JSON.stringify(cartItems));
+                                // Trigger live reload
+                                displayCart();
+                            }
+                        });
+                    });
+                }
             }
-        });
 
-        // Add event listener to form submission
-        document.getElementById("order-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent default form submission
+            // Display cart initially
+            displayCart();
 
-            // Retrieve form data
-            var formData = new FormData(event.target);
-            var formDataObject = {};
-            formData.forEach(function(value, key) {
-                formDataObject[key] = value;
-            });
-
-            // Retrieve cart items from localStorage
-            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-            // Save form data and cart items to Firebase Realtime Database
-            var database = firebase.database();
-            var ordersRef = database.ref("orders");
-            var newOrderRef = ordersRef.push();
-            newOrderRef.set({
-                name: formDataObject.name,
-                contact: formDataObject.contact,
-                address: formDataObject.address,
-                cartItems: cartItems
-            }).then(function() {
-                // Redirect to pay.html
-                window.location.href = "pay.html";
-            }).catch(function(error) {
-                console.error("Error saving order:", error);
-                alert("Error occurred while placing the order. Please try again later.");
+            // Listen for changes in localStorage (storage event)
+            window.addEventListener('storage', function(e) {
+                // Check if the event is related to cartItems
+                if (e.key === 'cartItems') {
+                    // Trigger live reload
+                    displayCart();
+                }
             });
         });
     </script>
