@@ -1,0 +1,214 @@
+:root {
+  /* --gold-color: #c6974a; */
+  --black-color: #0d0d0d;
+  --white-color: #fff;
+  --light-color: #aaa;
+  --bg-color: #222;
+  --black-bg: rgba(17, 17, 17, 0.7);
+  --border: 0.2rem solid #aaa;
+}
+
+.packages {
+  margin-top: 15rem;
+}
+.packages .content {
+  margin-bottom: 5rem;
+}
+
+.slider-container {
+  position: relative;
+  max-width: 67rem;
+  overflow: hidden;
+  margin-left: 8rem;
+}
+
+.slider {
+  display: flex;
+}
+
+.slide {
+  flex: 0 0 auto;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  height: 35rem;
+}
+
+.prev,
+.next {
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+.buttons {
+  margin-top: 5rem;
+}
+
+.btn-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  right: 18rem;
+}
+
+.packageTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--black-color);
+}
+
+.price-button {
+  padding: 15px 25px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+  overflow: hidden;
+  cursor: pointer;
+}
+.price-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #212121;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+  cursor: pointer;
+}
+
+.price-button:hover {
+  color: #e8e8e8;
+}
+.price-button:hover::before {
+  width: 100%;
+}
+
+.add-to-cart-button {
+  width: 160px;
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  background-color: green;
+  color: var(--white-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  overflow: hidden;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103);
+  position: relative;
+  margin-top: 10rem;
+  margin-bottom: 5rem;
+  margin-left: 44%;
+  font-size: 1.5rem;
+}
+
+.IconContainer {
+  position: absolute;
+  left: -50px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+  transition-duration: 0.5s;
+}
+
+.icon {
+  border-radius: 1px;
+}
+
+.text {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white-color);
+  z-index: 1;
+  transition-duration: 0.5s;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.add-to-cart-button:hover .IconContainer {
+  transform: translateX(58px);
+  border-radius: 40px;
+  transition-duration: 0.5s;
+  margin-right: 1rem;
+}
+
+.add-to-cart-button:hover .text {
+  transform: translate(10px, 0px);
+  transition-duration: 0.5s;
+}
+
+.add-to-cart-button:active {
+  transform: scale(0.95);
+  transition-duration: 0.5s;
+}
+
+.des-hr {
+  position: absolute;
+  border-bottom: 3px solid var(--black-color);
+  width: 50%;
+}
+
+.package-name-visa h2,
+.package-des-title {
+  margin: 2rem 0;
+  font-size: 5rem;
+  font-weight: 600;
+  color: var(--black-color);
+  font-family: "Single Day", cursive;
+}
+
+.package-price h4 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  /* color: var(--black-color); */
+}
