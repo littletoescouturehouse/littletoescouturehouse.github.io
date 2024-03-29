@@ -84,9 +84,27 @@
         <h1>Your Cart</h1>
       </div>
       <div id="cart-items"></div>
-      <div class="checkout-container">
-        <button><a class="btn-1" href="checkout.html">checkout</a></button>
-      </div>
+      <a href="checkout.html" class="checkout-container">
+        <div class="container">
+          <div class="left-side">
+            <div class="card">
+              <div class="card-line"></div>
+              <div class="buttons"></div>
+            </div>
+            <div class="post">
+              <div class="post-line"></div>
+              <div class="screen">
+                <div class="dollar">RS</div>
+              </div>
+              <div class="numbers"></div>
+              <div class="numbers-line2"></div>
+            </div>
+          </div>
+          <div class="right-side">
+            <div class="new">Checkout</div>
+          </div>
+        </div>
+      </a>
     </section>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -119,7 +137,7 @@
                                         <p>Size: ${item.buttonName}</p>
                                     </div>
                                 </div>
-                                    <button class="remove-item-button btn-1" data-name="${item.name}" data-price="${item.price}">Remove</button>
+                                    <button class="remove-item-button noselect" data-name="${item.name}" data-price="${item.price}"> <span class="text">Delete</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></button>
                                     <hr>
                             </div>`;
               cartItemsContainer.appendChild(itemElement);
@@ -179,5 +197,6 @@
         });
       });
     </script>
+    <script src="script.js"></script>
   </body>
 </html>

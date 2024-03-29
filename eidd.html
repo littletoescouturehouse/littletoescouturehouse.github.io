@@ -94,9 +94,8 @@
 
     <!-- packages -->
 
-    <div class="image-container">
-      <div id="menu"></div>
-    </div>
+    <div id="menu"></div>
+
     <div id="itemIdDisplay"></div>
 
     <!--------------------------------------------------------- Footer ------------------------------------------->
@@ -129,132 +128,88 @@
               // Create menu item element
               var menuItemElement = document.createElement("div");
               menuItemElement.innerHTML = `
-                <div class="packagesBox">
-                    <div class="slider-container">
-                        <div class="slider">
-                    <!-- Loop through each image URL in the menuItem.images array -->
-${menuItem.images
-  .map(
-    (image, index) => `
-        <div class="slide ${index === 0 ? "active" : ""}">
-            <img src="${image}" alt="${menuItem.name}" class="menu-image-visa">
+              <div class="bigDiv">
+    <div class="slider-container">
+        <div class="slider">
+            <!-- Loop through each image URL in the menuItem.images array -->
+            ${menuItem.images
+              .map(
+                (image, index) => `
+                <div class="slide ${index === 0 ? "active" : ""}">
+                    <img src="${image}" alt="${
+                  menuItem.name
+                }" class="menu-image-visa">
+                </div>
+            `
+              )
+              .join("")}
         </div>
+        <button class="w3-button w3-display-left prev" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-display-right next" onclick="plusDivs(+1)">&#10095;</button>
+    </div>
 
-`
-  )
-  .join("")}
-  </div>
-    <button class="w3-button w3-display-left prev" onclick="plusDivs(-1)">&#10094;</button>
-    <button class="w3-button w3-display-right next" onclick="plusDivs(+1)">&#10095;</button>
+    <div class="btn-container">
+        <h1 class="packageTitle">Product Size</h1>
+        <div class="buttons">
+            <!-- Check if menuItem.button1 is defined before rendering the button -->
+            ${
+              menuItem.button1
+                ? `<button class="price-button" data-price="${menuItem.button1Price}">${menuItem.button1}</button>`
+                : ""
+            }
+            <!-- Check if menuItem.button2 is defined before rendering the button -->
+            ${
+              menuItem.button2
+                ? `<button class="price-button" data-price="${menuItem.button2Price}">${menuItem.button2}</button>`
+                : ""
+            }
+            <!-- Check if menuItem.button3 is defined before rendering the button -->
+            ${
+              menuItem.button3
+                ? `<button class="price-button" data-price="${menuItem.button3Price}">${menuItem.button3}</button>`
+                : ""
+            }
+            <!-- Check if menuItem.button4 is defined before rendering the button -->
+            ${
+              menuItem.button4
+                ? `<button class="price-button" data-price="${menuItem.button4Price}">${menuItem.button4}</button>`
+                : ""
+            }
+            <!-- Check if menuItem.button5 is defined before rendering the button -->
+            ${
+              menuItem.button5
+                ? `<button class="price-button" data-price="${menuItem.button5Price}">${menuItem.button5}</button>`
+                : ""
+            }
+            <!-- Check if menuItem.button6 is defined before rendering the button -->
+            ${
+              menuItem.button6
+                ? `<button class="price-button" data-price="${menuItem.button6Price}">${menuItem.button6}</button>`
+                : ""
+            }
+            <!-- Check if menuItem.button7 is defined before rendering the button -->
+            ${
+              menuItem.button7
+                ? `<button class="price-button" data-price="${menuItem.button7Price}">${menuItem.button7}</button>`
+                : ""
+            }
+            <!-- Check if menuItem.button8 is defined before rendering the button -->
+            ${
+              menuItem.button8
+                ? `<button class="price-button" data-price="${menuItem.button8Price}">${menuItem.button8}</button>`
+                : ""
+            }
+            <!-- Check if menuItem.button9 is defined before rendering the button -->
+            ${
+              menuItem.button9
+                ? `<button class="price-button" data-price="${menuItem.button9Price}">${menuItem.button9}</button>`
+                : ""
+            }
+            <!-- Add more button checks as needed -->
+        </div>
+    </div>
 </div>
 
-                <section class="btn-container">
-                    <h1 class="packageTitle">Product Size</h>
-                    <div class="buttons">
-                        <!-- Check if menuItem.button1 is defined before rendering the button -->
-${
-  menuItem.button1
-    ? `<button class="price-button" data-price="${menuItem.button1Price}">${menuItem.button1}</button>`
-    : ""
-}
-
-<!-- Check if menuItem.button2 is defined before rendering the button -->
-${
-  menuItem.button2
-    ? `<button class="price-button" data-price="${menuItem.button2Price}">${menuItem.button2}</button>`
-    : ""
-}
-
-<!-- Check if menuItem.button3 is defined before rendering the button -->
-${
-  menuItem.button3
-    ? `<button class="price-button" data-price="${menuItem.button3Price}">${menuItem.button3}</button>`
-    : ""
-}
-
-<!-- Check if menuItem.button4 is defined before rendering the button -->
-${
-  menuItem.button4
-    ? `<button class="price-button" data-price="${menuItem.button4Price}">${menuItem.button4}</button>`
-    : ""
-}
-
-<!-- Check if menuItem.button5 is defined before rendering the button -->
-${
-  menuItem.button5
-    ? `<button class="price-button" data-price="${menuItem.button5Price}">${menuItem.button5}</button>`
-    : ""
-}
-
-<!-- Check if menuItem.button6 is defined before rendering the button -->
-${
-  menuItem.button6
-    ? `<button class="price-button" data-price="${menuItem.button6Price}">${menuItem.button6}</button>`
-    : ""
-}
-
-<!-- Check if menuItem.button7 is defined before rendering the button -->
-${
-  menuItem.button7
-    ? `<button class="price-button" data-price="${menuItem.button7Price}">${menuItem.button7}</button>`
-    : ""
-}
-
-<!-- Check if menuItem.button8 is defined before rendering the button -->
-${
-  menuItem.button8
-    ? `<button class="price-button" data-price="${menuItem.button8Price}">${menuItem.button8}</button>`
-    : ""
-}
-
-<!-- Check if menuItem.button9 is defined before rendering the button -->
-${
-  menuItem.button9
-    ? `<button class="price-button" data-price="${menuItem.button9Price}">${menuItem.button9}</button>`
-    : ""
-}
-${
-  menuItem.button10
-    ? `<button class="price-button" data-price="${menuItem.button10Price}">${menuItem.button10}</button>`
-    : ""
-}
-${
-  menuItem.button11
-    ? `<button class="price-button" data-price="${menuItem.button11Price}">${menuItem.button11}</button>`
-    : ""
-}
-${
-  menuItem.button12
-    ? `<button class="price-button" data-price="${menuItem.button12Price}">${menuItem.button12}</button>`
-    : ""
-}
-${
-  menuItem.button13
-    ? `<button class="price-button" data-price="${menuItem.button13Price}">${menuItem.button13}</button>`
-    : ""
-}
-${
-  menuItem.button14
-    ? `<button class="price-button" data-price="${menuItem.button14Price}">${menuItem.button14}</button>`
-    : ""
-}
-${
-  menuItem.button15
-    ? `<button class="price-button" data-price="${menuItem.button15Price}">${menuItem.button15}</button>`
-    : ""
-}
-${
-  menuItem.button16
-    ? `<button class="price-button" data-price="${menuItem.button16Price}">${menuItem.button16}</button>`
-    : ""
-}
-${
-  menuItem.button17
-    ? `<button class="price-button" data-price="${menuItem.button17Price}">${menuItem.button17}</button>`
-    : ""
-}
-
-</section>
 
                         <button class="add-to-cart-button" data-name="${
                           menuItem.name
@@ -281,6 +236,7 @@ ${
                                 <div class="package-price" id="current-price">        
                                     <h4>Rs ${menuItem.button1Price}</h4>
                                 </div>
+                        </div>
                             </div>
                             <div class="package-des" id="des">
                                 <div class="heading">
@@ -296,9 +252,8 @@ ${
                                     }</p>
                                 </div> 
                             </div>
-                        </div>
-                    </section>      
-                </div>`;
+                    </section>
+                       `;
 
               // Append menu item element to menu container
               menuContainer.appendChild(menuItemElement);

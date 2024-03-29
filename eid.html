@@ -114,10 +114,15 @@
 
             var menuItemElement = document.createElement("div");
             menuItemElement.innerHTML = `
-            <button class="btn-package" onclick="redirectToUrl('${menuItem.name}')">
+            <div class="btn-container">
+              <button class="btn-package" onclick="redirectToUrl('${menuItem.name}')">
                 <div class="packagesBox">
                     <div class="image">
                         <img src="${firstImageUrl}" alt="${menuItem.name}" class="menu-image"> 
+                    </div>
+                    <div class="preview">
+                      <a"><i class="ri-eye-line"></i></a>  
+                      <i class="ri-shopping-cart-2-fill"></i>
                     </div>
                     <div class="content">
                         <div class="package-details">    
@@ -130,12 +135,12 @@
                         </div>    
                     </div>    
                 </div> 
-            </button>
+              </button>
+            </div>
             `;
             menuContainer.appendChild(menuItemElement);
 
             // Break the loop after the first iteration
-            
           }
         }
       });

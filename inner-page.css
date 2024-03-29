@@ -17,9 +17,15 @@
 
 .slider-container {
   position: relative;
-  max-width: 67rem;
+  max-width: 33%;
   overflow: hidden;
-  margin-left: 8rem;
+  margin-left: 20rem;
+}
+
+#menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .slider {
@@ -31,11 +37,11 @@
 }
 
 .slide img {
-  width: 100%;
+  width: 38rem;
   height: auto;
   display: block;
   object-fit: cover;
-  height: 35rem;
+  height: 100%;
 }
 
 .prev,
@@ -60,7 +66,8 @@
 }
 
 .buttons {
-  margin-top: 5rem;
+  margin: 5rem 0;
+  width: 85%;
 }
 
 .btn-container {
@@ -68,8 +75,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 50%;
-  right: 18rem;
+  flex-direction: column;
+  /* top: 50%;
+  right: -60rem; */
 }
 
 .packageTitle {
@@ -81,6 +89,9 @@
   font-size: 3rem;
   font-weight: 600;
   color: var(--black-color);
+  position: relative;
+  /* transform: translate(32rem, -62rem); */
+  /* width: 50%; */
 }
 
 .price-button {
@@ -98,6 +109,7 @@
   transition: all 250ms;
   overflow: hidden;
   cursor: pointer;
+  margin: 1rem 0;
 }
 .price-button::before {
   content: "";
@@ -138,7 +150,7 @@
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103);
   position: relative;
   margin-top: 10rem;
-  margin-bottom: 5rem;
+  margin-bottom: 30rem;
   margin-left: 44%;
   font-size: 1.5rem;
 }
@@ -211,4 +223,43 @@
   font-size: 2.5rem;
   font-weight: 600;
   /* color: var(--black-color); */
+}
+
+.packages-box-container .content {
+  display: flex;
+  position: absolute;
+  top: 70%;
+  right: 25%;
+}
+
+.package-des {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.package-des .des-1,
+.package-des .des-2 {
+  font-size: 2rem;
+  margin: 1rem 20rem;
+  color: var(--black-color);
+  /* background-color: var(--light-color); */
+  padding: 1rem;
+}
+
+.bigDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* gap: 280rem; */
+}
+
+.slider-container {
+  flex: 1; /* Flex grow to fill available space */
+  /* margin-left: 80rem; Adjust spacing between slider and buttons */
+}
+
+.btn-container {
+  flex: 1; /* Flex grow to fill available space */
+  margin-left: 90rem;
 }
