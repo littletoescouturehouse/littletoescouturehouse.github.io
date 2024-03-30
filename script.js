@@ -37,3 +37,11 @@ function showDivs(n) {
   }
   x[slideIndex - 1].style.display = "block";
 }
+
+// --------------------------------------------------Contact------------------------------------------
+
+function addClass() {
+  document.body.classList.add("sent");
+}
+
+sendLetter.addEventListener("click", addClass);
