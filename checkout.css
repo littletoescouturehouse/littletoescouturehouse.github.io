@@ -94,6 +94,11 @@ textarea.form-input {
   text-align: center;
 }
 
+.cart-items {
+  font-size: 3rem !important;
+  /* background-color: red !important; */
+}
+
 /* -----------------------------------------------breakpoints--------------------------------- */
 @media (max-width: 450px) {
   .form-container {

@@ -121,7 +121,7 @@
           </form>
         </div>
 
-        <div id="cart-items"></div>
+        <div id="cart-items" class="cart-items"></div>
 
         <div class="bank-details">
           <p>
@@ -158,7 +158,7 @@
         // Display cart items on the page
         var cartItemsContainer = document.getElementById("cart-items");
         if (cartItems.length === 0) {
-          cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+          cartItemsContainer.innerHTML = "<p>Your cart is empty 😞.</p>";
         } else {
           var totalAmount = 0;
 

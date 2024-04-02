@@ -263,3 +263,86 @@
   flex: 1; /* Flex grow to fill available space */
   margin-left: 90rem;
 }
+
+/* ----------------------------------------------------------Breakpoints------------------------------------- */
+
+:root {
+  /* --gold-color: #c6974a; */
+  --black-color: #0d0d0d;
+  --white-color: #fff;
+  --light-color: #aaa;
+  --bg-color: #222;
+  --black-bg: rgba(17, 17, 17, 0.7);
+  --border: 0.2rem solid #aaa;
+}
+
+/* Existing styles... */
+
+@media (max-width: 450px) {
+  .packages {
+    margin-top: 5rem;
+  }
+  .slider-container,
+  .btn-container {
+    max-width: 100%;
+    margin-left: 0;
+  }
+  .btn-container {
+    font-size: 3rem;
+    padding: 0 9rem;
+  }
+
+  #menu {
+    flex-direction: column;
+  }
+  .slide img {
+    width: 48rem;
+  }
+  .buttons,
+  .price-button {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: smaller;
+  }
+  .add-to-cart-button {
+    width: 50%;
+    margin: 5rem;
+  }
+
+  .packageTitle {
+    font-size: 3rem;
+    margin-top: 50rem;
+  }
+  .package-name-visa h2,
+  .package-des-title {
+    /* font-size: 4rem; */
+  }
+  .add-to-cart-button {
+    margin-left: 5%;
+    margin-top: 58rem;
+    font-size: 2.5rem;
+    /* padding: 0 15rem; */
+  }
+  .bigDiv,
+  .packages-box-container .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .packages-box-container .content {
+    font-size: 127rem;
+    margin-top: 62rem;
+    margin-right: 10rem;
+    line-height: 1rem;
+  }
+
+  .package-price h4 {
+    font-size: 2rem;
+  }
+
+  .packages .content {
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+  }
+}
