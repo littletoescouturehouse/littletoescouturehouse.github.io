@@ -40,11 +40,7 @@ function closeNav() {
 
 // --------------------------------------------------Contact------------------------------------------
 
-function addClass() {
-  document.body.classList.add("sent");
-}
 
-sendLetter.addEventListener("click", addClass);
 
 // -------------------------temp-------------------------
 
@@ -54,3 +50,20 @@ function changeImage(index) {
     slide.classList.toggle("active", i === index);
   });
 }
+// Get a reference to the database
+const database = firebase.database();
+const form = document.querySelector("#newsletter");
+
+// Add submit event listener
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  // Get input field value
+  const email = document.querySelector("#email").value;
+
+  // Save data to Firebase
+  database.ref("newsletter").push({
+    email,
+  });
+  alert("You are successfully subscribed.");
+});
