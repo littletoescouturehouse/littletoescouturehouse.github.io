@@ -417,6 +417,29 @@
         }
       });
     </script>
+
+    <script>
+      // ------------------------image changing--------------------
+      function changeImage(index) {
+        // Get all the small images
+        const smallImages = document.querySelectorAll(".small-images .slide");
+
+        // Remove 'active' class from all small images
+        smallImages.forEach((image) => {
+          image.classList.remove("active");
+        });
+
+        // Add 'active' class to the clicked small image
+        smallImages[index].classList.add("active");
+
+        // Change the big image to match the clicked small image
+        const bigImages = document.querySelectorAll(".big-image .slide");
+        bigImages.forEach((image) => {
+          image.classList.remove("active");
+        });
+        bigImages[index].classList.add("active");
+      }
+    </script>
     <script src="script.js"></script>
   </body>
 </html>

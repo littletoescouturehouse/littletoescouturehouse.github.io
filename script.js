@@ -40,16 +40,7 @@ function closeNav() {
 
 // --------------------------------------------------Contact------------------------------------------
 
-
-
-// -------------------------temp-------------------------
-
-function changeImage(index) {
-  const slides = document.querySelectorAll(".big-image .slide");
-  slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === index);
-  });
-}
+// ---------------------------------------backend----------------------------------
 // Get a reference to the database
 const database = firebase.database();
 const form = document.querySelector("#newsletter");
