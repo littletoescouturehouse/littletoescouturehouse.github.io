@@ -99,6 +99,32 @@ textarea.form-input {
   /* background-color: red !important; */
 }
 
+.thankyou {
+  margin-top: 20rem;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.thankyou h1 {
+  font-size: 4rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+.thankyou h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.thankyou-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 /* -----------------------------------------------breakpoints--------------------------------- */
 @media (max-width: 450px) {
   .form-container {
@@ -112,5 +138,12 @@ textarea.form-input {
   }
   .bank-details {
     width: 100%;
+  }
+
+  .thankyou h1 {
+    font-size: 3rem;
+  }
+  .thankyou h2 {
+    font-size: 1.5rem;
   }
 }
