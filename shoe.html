@@ -173,7 +173,7 @@
       var database = firebase.database();
 
       // Fetch menu data from Firebase
-      var menuRef = database.ref("shoe");
+      var menuRef = database.ref("shoes");
       menuRef.once("value", function (snapshot) {
         // Use once instead of on to fetch the data only once
         var menuData = snapshot.val();
@@ -224,7 +224,7 @@
         // Save itemName to localStorage
         localStorage.setItem("itemName", itemName);
 
-        var url = "/eidd.html";
+        var url = "/shoess.html";
         window.location.href = url;
       }
     </script>
