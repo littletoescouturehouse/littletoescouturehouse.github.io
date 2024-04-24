@@ -582,12 +582,12 @@ aside .pages {
   color: var(--white-color) !important;
 }
 
-.footer .box h3 {
+.footer .contact-info h3 {
   color: var(--white-color);
   font-size: 2.2rem;
 }
 
-.footer .box p {
+.footer .contact-info p {
   padding: 1rem 0;
   font-size: 2rem;
   color: var(--light-color);
