@@ -18,6 +18,7 @@
 
 .packagesBox {
   cursor: pointer;
+  background-color: var(--white-color);
 }
 
 .preview {
@@ -48,9 +49,13 @@
   width: 100%; /* Ensure buttons take up full width of their container */
 }
 
+/* .image {
+  background-color: red;
+} */
+
 .packagesBox .image img {
-  width: 35rem;
-  height: 26rem;
+  width: 31rem;
+  height: 35rem;
   object-fit: cover;
 }
 .packagesBox:hover {
@@ -62,10 +67,12 @@
 .package-name h2 {
   font-size: 2rem;
   font-weight: 800;
+  color: var(--black-color);
 }
 .package-price h4 {
   font-size: 1.5rem;
   font-weight: 800;
+  color: var(--black-color);
 }
 
 /* ----------------------------------------------------cart styles------------------------------- */
