@@ -208,7 +208,7 @@ click <a href="admin7.html">here</a> to edit casual<br>
     var button19Price = document.getElementById("button19Price").value;
     var itemId = itemName;
 
-var images = []; // Array to store image URLs
+    var images = []; // Array to store image URLs
 
 // Function to upload each image and return a promise that resolves with the download URL
 function uploadImage(file) {
@@ -239,7 +239,7 @@ var uploadTasks = itemImageInput.map(uploadImage);
 Promise.all(uploadTasks).then(function(downloadURLs) {
     var item = {
         images: downloadURLs, 
-        name: itemName,
+            name: itemName,
             description: itemDescription,
             descriptionnext: itemDescriptionnext,
             // Additional properties for buttons and their prices
@@ -278,7 +278,12 @@ Promise.all(uploadTasks).then(function(downloadURLs) {
             button17Price: button17Price,
             button18: button18,
             button18Price: button18Price,
-            button19: buttonem with the image URLs and button information
+            button19: button19,
+            button19Price: button19Price,
+         button12Price: button12Price
+        };
+
+        // Save the item with the image URLs and button information
         itemsRef.child(itemId).set(item)
             .then(function() {
                 console.log("Item saved successfully!");
@@ -310,4 +315,4 @@ Promise.all(uploadTasks).then(function(downloadURLs) {
     }
 </script>
 </body>
-</html>
+    </html>
