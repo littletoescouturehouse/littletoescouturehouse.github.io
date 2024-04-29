@@ -238,7 +238,7 @@ var uploadTasks = itemImageInput.map(uploadImage);
 // Use Promise.all to wait for all uploads to complete
 Promise.all(uploadTasks).then(function(downloadURLs) {
     var item = {
-        images: downloadURLs,       
+        images: downloadURLs, 
         name: itemName,
             description: itemDescription,
             descriptionnext: itemDescriptionnext,
