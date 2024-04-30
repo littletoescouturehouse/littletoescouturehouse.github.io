@@ -128,7 +128,9 @@
   font-size: 1.5rem;
   border: none;
   background-color: green;
-  color: black;
+  color: black; /* If you're using `currentColor` in your SVG fill/stroke */
+  fill: black; /* Directly setting fill color */
+  stroke: black; /* If your SVG has strokes */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -137,6 +139,11 @@
   overflow: hidden;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103);
   position: relative;
+}
+.add-to-cart-button p {
+  color: black; /* If you're using `currentColor` in your SVG fill/stroke */
+  fill: black; /* Directly setting fill color */
+  stroke: black; /* If your SVG has strokes */
 }
 
 .IconContainer {
@@ -155,8 +162,9 @@
   transition-duration: 0.5s;
 }
 .IconContainer svg {
-  color: black;
-  /* background-color: red; */
+  color: black; /* If you're using `currentColor` in your SVG fill/stroke */
+  fill: black; /* Directly setting fill color */
+  stroke: black; /* If your SVG has strokes */
 }
 
 .icon {
@@ -169,11 +177,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: black;
   z-index: 1;
   transition-duration: 0.5s;
   font-size: 3rem;
   font-weight: 600;
+  color: black; /* If you're using `currentColor` in your SVG fill/stroke */
+  fill: black; /* Directly setting fill color */
+  stroke: black; /* If your SVG has strokes */
 }
 
 .add-to-cart-button:hover .IconContainer {
