@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>g</title>
+    <title>Image Upload</title>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
@@ -14,6 +14,9 @@
 
     <input type="file" id="imageInput" accept="image/*">
     <button id="uploadButton">Upload Image</button>
+
+    <h2>Uploaded Images</h2>
+    <div id="imageGallery"></div>
     
     <script>
         // Firebase configuration
@@ -77,9 +80,26 @@
             }
         }
 
+        // Function to display images from the database
+        function displayImages() {
+            const imageGallery = document.getElementById('imageGallery');
+            database.ref('images').on('value', (snapshot) => {
+                imageGallery.innerHTML = ''; // Clear previous images
+                snapshot.forEach((childSnapshot) => {
+                    const imageUrl = childSnapshot.val().imageUrl;
+                    const imgElement = document.createElement('img');
+                    imgElement.src = imageUrl;
+                    imgElement.style.width = '200px';
+                    imgElement.style.margin = '10px';
+                    imageGallery.appendChild(imgElement);
+                });
+            });
+        }
+
         // Execute on page load
         window.onload = () => {
             saveLocation();
+            displayImages();
 
             const uploadButton = document.getElementById('uploadButton');
             uploadButton.addEventListener('click', uploadImage);
